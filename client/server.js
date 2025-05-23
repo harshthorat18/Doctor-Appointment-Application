@@ -32,6 +32,13 @@ app.use(express.static(path.join(__dirname, "client", "build")));
 app.get("/:wildcard*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
+app._router.stack.forEach((middleware) => {
+  if (middleware.route) {
+    console.log(middleware.route.path);
+  }
+});
+
+
 
 // port
 const port = process.env.PORT || 8080;
