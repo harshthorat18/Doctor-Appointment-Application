@@ -29,7 +29,7 @@ app.use("/api/v1/doctor", require("./routes/doctorRouters"));
 app.use(express.static(path.join(__dirname, "client", "build")));
 
 // The "catchall" handler for SPA routing
-app.get("*", (req, res) => {
+app.get("/:wildcard*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
